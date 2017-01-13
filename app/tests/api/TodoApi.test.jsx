@@ -52,4 +52,32 @@ describe('TodoAPI', () => {
       expect(actualTodos).toEqual(todos);
     });
   });
+  describe("filter todos" , ()=>{
+    var todos = [
+      {
+        id :1 ,
+        text : 'some text',
+        completed : true
+      },
+      {
+        id :2,
+        text : 'other some text',
+        completed : false
+      },
+      {
+        id :3 ,
+        text : 'other some text',
+        completed : true
+      }
+  ]
+
+    it('should return all item if showcompleted is true' , ()=>{
+      var filterTodos = TodoAPI.filterTodos(todos,true,'');
+      expect(filterTodos.length).toBe(3);
+    })
+    it('should return 2 item if showcompleted is false' , ()=>{
+      var filterTodos = TodoAPI.filterTodos(todos,false,'');
+      expect(filterTodos.length).toBe(1);
+    })
+  })
 });
